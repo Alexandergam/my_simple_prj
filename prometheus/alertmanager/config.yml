@@ -1,0 +1,16 @@
+global:
+  resolve_timeout: 10s
+
+route:
+  group_by: ['alertname']
+  group_wait: 3s
+  receiver: 'telegram_bot'
+
+#Бот токен и чат ид нужно получать индивидельно, через бот в телеграме для конкретного чата
+receivers:
+- name: 'telegram_bot'
+  telegram_configs:
+  - bot_token: ''
+    api_url: 'https://api.telegram.org'
+    chat_id: 
+    parse_mode: 'HTML'
