@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: ./kompose convert
+    kompose.version: 1.26.0 (40646f47)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: flask-test
+  name: flask-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: flask-test
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: ./kompose convert
+        kompose.version: 1.26.0 (40646f47)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/my-prj-net: "true"
+        io.kompose.service: flask-test
+    spec:
+      containers:
+        - image: flask-test
+          imagePullPolicy: Never
+          name: flask-test
+          ports:
+            - containerPort: 5050
+          resources: {}
+      restartPolicy: Always
+status: {}

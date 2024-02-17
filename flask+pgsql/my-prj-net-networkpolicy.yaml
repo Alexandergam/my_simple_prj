@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  creationTimestamp: null
+  name: my-prj-net
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              io.kompose.network/my-prj-net: "true"
+  podSelector:
+    matchLabels:
+      io.kompose.network/my-prj-net: "true"

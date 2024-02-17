@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: ./kompose convert
+    kompose.version: 1.26.0 (40646f47)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: flask-test
+  name: flask-test
+spec:
+  ports:
+    - name: "5050"
+      port: 5050
+      targetPort: 5050
+  selector:
+    io.kompose.service: flask-test
+status:
+  loadBalancer: {}
